@@ -2,17 +2,138 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" content="GreenSeed is your go-to platform for sustainable investments, offering insights and opportunities to grow your future with smart, long-term financial strategies.">
+    <meta name="keywords" content="sustainable investments, eco-friendly finance, green investing, responsible investing, financial growth, GreenSeed">
+    <meta name="author" content="GreenSeed">
+    <meta property="og:title" content="GreenSeed - Grow Your Future with Sustainable Investments">
+    <meta property="og:description" content="Discover sustainable investment opportunities with GreenSeed and grow your financial future responsibly.">
+    <meta property="og:image" content="/images/bg.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GreenSeed - Grow Your Future with Sustainable Investments">
+    <meta name="twitter:description" content="Explore smart, sustainable investment opportunities and grow your wealth with GreenSeed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="icon" href="/images/favicon.png" />
     <link rel="shortcut icon" href="/images/favicon.png" />
     <link rel="apple-touch-icon" href="/images/favicon.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon.png" />
-    <link rel="stylesheet" href="/css/all.min.css">
-    <link rel="stylesheet" href="/css/tailwind.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
+    <style>
+        /* Previous styles remain the same */
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 20c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm0 2a8 8 0 100 16 8 8 0 000-16z' fill='rgba(167, 243, 208, 0.1)'/%3E%3C/svg%3E");
+        }
+
+        .toaster {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 2rem;
+            z-index: 9999;
+            animation: slideUp 0.5s ease-out;
+            min-width: 300px;
+            max-width: 90%;
+        }
+
+        @keyframes slideUp {
+            from { transform: translate(-50%, 100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.3);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            animation: slideLeft 5s linear;
+        }
+
+        @keyframes slideLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        .input-focus-effect {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .input-focus-effect::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22c55e, #15803d);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .input-focus-effect:focus-within::after {
+            transform: scaleX(1);
+        }
+
+        .green-gradient {
+            background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+        }
+
+        @media (max-width: 1023px) {
+            body {
+                background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+                background-image: url('/images/bg.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+            .mobile-glass {
+                backdrop-filter: blur(12px);
+            }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            dark: {
+                                50: '#111827',
+                                100: '#1f2937',
+                                200: '#374151',
+                                300: '#4b5563',
+                            },
+                            green: {
+                                50: '#10b981',
+                                100: '#047857',
+                                900: '#064e3b',
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
   </head>
-  <body>
+  <body class="bg-gray-800">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

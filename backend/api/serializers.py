@@ -8,25 +8,37 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
 
-        token["username"] = user.username
-        token["email"] = user.email
         token["full_name"] = user.full_name
+        token["username"] = user.username
+        token["phone_number"] = str(user.phone_number)
+        token["email"] = user.email
+        token["referrer"] = user.referrer
 
         return token
     
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=True, validators=[validate_password], style={"input_type": "password"})
-    password2 = serializers.CharField(write_only=True, required=True, style={"input_type": "password"})
+    password = serializers.CharField(write_only=True, required=True, validators=[validate_password], style={"input_type": "password"}, max_length=8)
+    password2 = serializers.CharField(write_only=True, required=True, style={"input_type": "password"}, max_length=8)
+    phone_number = serializers.DecimalField(
+        max_digits=9,
+        decimal_places=0,
+        required=True,
+        style={"input_type": "number"}  # This makes the input show as a number field
+    )
+    referrer = serializers.CharField(required=False, allow_null=True, allow_blank=True)
+    full_name = serializers.CharField(required=True)
 
     class Meta:
         model = User
-        fields = ["username", "full_name", "email", "password", "password2"]
+        fields = ["full_name", "username", "phone_number", "email", "referrer", "password", "password2"]
 
     def create(self, validated_data):
         user = User.objects.create(
             username=validated_data["username"],
             full_name=validated_data["full_name"],
-            email=validated_data["email"]
+            email=validated_data["email"],
+            phone_number=validated_data.get("phone_number"),
+            referrer=validated_data["referrer"]
         )
         user.set_password(validated_data["password"])
         user.save()
