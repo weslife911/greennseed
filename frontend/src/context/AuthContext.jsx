@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import swal from "sweetalert2";
 
 const AuthContext = createContext();
@@ -9,17 +9,16 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
 
-    const [authTokens, setAuthTokens] = useState(() => {
-        localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null
-    });
+    const [authTokens, setAuthTokens] = useState(() => localStorage.getItem("authTokens") ? JSON.parse(localStorage.getItem("authTokens")) : null);
 
-    const [user, setUser] = useState(() => {
-        localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null
-    });
+    const [user, setUser] = useState(() => localStorage.getItem("authTokens") ? jwt_decode(localStorage.getItem("authTokens")) : null);
 
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+
+    const ref = searchParams.get("ref")
 
      const registerUser = async (data) => {
         try {
@@ -34,7 +33,7 @@ export const AuthProvider = ({ children }) => {
                     username: data.username,
                     phone_number: data.phone_number.toString(),
                     email: data.email,
-                    referrer: data.referrer || null,
+                    referrer: ref || data.referrer || null,
                     password: data.password,
                     password2: data.password2
                 }),

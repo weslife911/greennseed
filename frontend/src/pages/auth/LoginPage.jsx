@@ -240,7 +240,7 @@ function LoginPage() {
                     <span className="text-sm text-gray-400">Remember me</span>
                   </label>
                   <Link
-                    to="/reset-password"
+                    to="/verify-email"
                     className="text-sm font-medium text-green-600 hover:text-green-500"
                   >
                     Forgot password?

@@ -1,5 +1,1 @@
 .env
-**/api/migrations/
-**/api/migrations/*py
-!**/migrations/__init__.py
-**/users/__pycache__

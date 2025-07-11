@@ -23,6 +23,21 @@
     <title></title>
     <style>
         /* Previous styles remain the same */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+
+        .telegram-pulse {
+            animation: pulse 2s infinite;
+        }
         .leaf-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 20c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm0 2a8 8 0 100 16 8 8 0 000-16z' fill='rgba(167, 243, 208, 0.1)'/%3E%3C/svg%3E");
         }
@@ -103,6 +118,41 @@
                 backdrop-filter: blur(12px);
             }
         }
+        .from-bronze-400 {
+                    --tw-gradient-from: #CD9B6A;
+                }
+
+                .to-bronze-400 {
+                    --tw-gradient-to: #CD9B6A;
+                }
+
+                .from-bronze-500 {
+                    --tw-gradient-from: #B87333;
+                }
+
+                .to-bronze-500 {
+                    --tw-gradient-to: #B87333;
+                }
+
+                .from-bronze-600 {
+                    --tw-gradient-from: #946327;
+                }
+
+                .to-bronze-600 {
+                    --tw-gradient-to: #946327;
+                }
+
+                .text-bronze-300 {
+                    color: #D4AF37;
+                }
+
+                .text-bronze-400 {
+                    color: #CD9B6A;
+                }
+
+                .bg-bronze-500 {
+                    background-color: #B87333;
+                }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     
